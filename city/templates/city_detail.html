@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex d-ai-center">
+    <div class="bd-content col-sm-12">
+        <h2 class="text-center">Citizens of {{city.name}}:</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Middle</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for citizen in city.citizens.all %}
+            <tr>
+                <th scope="row">{{citizen.id}}</th>
+                <td>{{citizen.firstname}}</td>
+                <td>{{citizen.lastname}}</td>
+                <td>{{citizen.middlename}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

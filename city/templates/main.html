@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex d-ai-center">
+    <div class="bd-content col-sm-8">
+        <h2 class='text-center'>Citizens:</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Middle</th>
+                <th scope="col">City</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for citizen in citizens %}
+            <tr>
+                <th scope="row">{{citizen.id}}</th>
+                <td>{{citizen.firstname}}</td>
+                <td>{{citizen.lastname}}</td>
+                <td>{{citizen.middlename}}</td>
+                <td>{{citizen.city}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="bd-content col-sm-4 mx-3">
+        <h2 class='text-center'>Top cities:</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Amount citizens</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for city in top_cities %}
+            <tr>
+                <th scope="row">{{city.id}}</th>
+                <td><a href="{% url 'city_detail' pk=city.pk %}">{{city.name}}</a></td>
+                <td>{{city.citizens.count}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
